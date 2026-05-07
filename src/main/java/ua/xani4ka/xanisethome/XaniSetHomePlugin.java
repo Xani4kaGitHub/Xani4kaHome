@@ -11,6 +11,7 @@ import ua.xani4ka.xanisethome.command.AdminListHomesCommand;
 import ua.xani4ka.xanisethome.command.DelHomeCommand;
 import ua.xani4ka.xanisethome.command.HomeCommand;
 import ua.xani4ka.xanisethome.command.SetHomeCommand;
+import ua.xani4ka.xanisethome.command.SetHomeMigrateCommand;
 
 public final class XaniSetHomePlugin extends JavaPlugin {
     private Settings settings;
@@ -29,8 +30,6 @@ public final class XaniSetHomePlugin extends JavaPlugin {
         saveBundledMessageFile("messages/fr.yml");
         saveBundledMessageFile("messages/nl.yml");
 
-        migrateLegacyHomesIfNeeded();
-
         this.settings = new Settings(this);
         this.messageManager = new MessageManager(this, this.settings);
         this.soundManager = new SoundManager(this, this.settings);
@@ -41,6 +40,7 @@ public final class XaniSetHomePlugin extends JavaPlugin {
         registerCommand("delhome", new DelHomeCommand(this.homeService, this.messageManager, this.soundManager));
         registerCommand("admindelhome", new AdminDelHomeCommand(this.homeService, this.messageManager));
         registerCommand("adminlisthomes", new AdminListHomesCommand(this.homeService, this.messageManager));
+        registerCommand("sethomemigrate", new SetHomeMigrateCommand(this));
 
         HomeTabCompleter completer = new HomeTabCompleter(this.homeService);
         getCommand("home").setTabCompleter(completer);
@@ -70,30 +70,26 @@ public final class XaniSetHomePlugin extends JavaPlugin {
         command.setExecutor(executor);
     }
 
-    private void migrateLegacyHomesIfNeeded() {
+    public boolean migrateLegacyHomes() {
         File targetHomes = new File(getDataFolder(), "homes.yml");
-        if (targetHomes.exists()) {
-            return;
-        }
-
-        if (this.settings != null ? !this.settings.isLegacyImportEnabled() : !getConfig().getBoolean("legacy-import.enabled", true)) {
-            return;
-        }
-
-        String folderName = this.settings != null ? this.settings.getLegacyImportFolder() : getConfig().getString("legacy-import.folder", "legacy-homes");
-        String fileName = this.settings != null ? this.settings.getLegacyImportFile() : getConfig().getString("legacy-import.file", "homes.yml");
+        String folderName = this.settings.getLegacyImportFolder();
+        String fileName = this.settings.getLegacyImportFile();
         File legacyFolder = new File(getDataFolder(), folderName);
         File legacyHomes = new File(legacyFolder, fileName);
         if (!legacyHomes.isFile()) {
-            return;
+            getLogger().warning("Legacy homes file was not found at '" + folderName + "/" + fileName + "'.");
+            return false;
         }
 
         try {
             Files.createDirectories(getDataFolder().toPath());
             Files.copy(legacyHomes.toPath(), targetHomes.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            this.homeService.reloadHomes();
             getLogger().info("Imported legacy homes from '" + folderName + "/" + fileName + "'.");
+            return true;
         } catch (IOException exception) {
             getLogger().severe("Could not import legacy homes from '" + folderName + "/" + fileName + "': " + exception.getMessage());
+            return false;
         }
     }
 }

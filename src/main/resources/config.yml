@@ -8,9 +8,8 @@ language: en
 message-overrides: {}
 
 # If homes.yml does not exist yet, the plugin will try to import it from:
-# plugins/<this plugin>/legacy-homes/homes.yml
+# plugins/<this plugin>/legacy-homes/homes.yml when the migration command is used.
 legacy-import:
-  enabled: true
   folder: legacy-homes
   file: homes.yml
 

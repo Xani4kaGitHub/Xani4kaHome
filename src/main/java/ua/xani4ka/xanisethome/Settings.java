@@ -57,10 +57,6 @@ public final class Settings {
         return this.plugin.getConfig().getBoolean("write-backup-file", true);
     }
 
-    public boolean isLegacyImportEnabled() {
-        return this.plugin.getConfig().getBoolean("legacy-import.enabled", true);
-    }
-
     public String getLegacyImportFolder() {
         return this.plugin.getConfig().getString("legacy-import.folder", "legacy-homes");
     }

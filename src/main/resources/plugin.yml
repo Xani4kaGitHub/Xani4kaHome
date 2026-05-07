@@ -25,6 +25,10 @@ commands:
     description: Admin command to list all homes of a player
     usage: /<command> <player>
     permission: homeplugin.adminlisthomes
+  sethomemigrate:
+    description: Imports homes from legacy-homes/homes.yml
+    usage: /<command>
+    permission: homeplugin.sethomemigrate
 permissions:
   homeplugin.sethome:
     default: true
@@ -35,4 +39,6 @@ permissions:
   homeplugin.admindelhome:
     default: op
   homeplugin.adminlisthomes:
+    default: op
+  homeplugin.sethomemigrate:
     default: op

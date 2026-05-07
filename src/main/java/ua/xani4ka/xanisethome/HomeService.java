@@ -127,6 +127,11 @@ public final class HomeService {
         this.storage.saveHomes(copyHomes());
     }
 
+    public synchronized void reloadHomes() {
+        this.homes.clear();
+        this.homes.putAll(this.storage.loadHomes());
+    }
+
     private void saveHomesAsync() {
         this.storage.saveHomesAsync(copyHomes());
     }
