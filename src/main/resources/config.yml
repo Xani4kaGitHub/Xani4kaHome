@@ -1,0 +1,70 @@
+# Which bundled language file to use from the messages folder.
+language: en
+
+# Optional message overrides without editing message files.
+# Example:
+# message-overrides:
+#   sethome-success: "<green>Home <yellow>{name}</yellow> saved!</green>"
+message-overrides: {}
+
+# If homes.yml does not exist yet, the plugin will try to import it from:
+# plugins/<this plugin>/legacy-homes/homes.yml
+legacy-import:
+  enabled: true
+  folder: legacy-homes
+  file: homes.yml
+
+# Cooldown in seconds before /home teleports the player.
+cooldown-seconds: 0
+
+# Cancel teleport when player moves during cooldown.
+cancel-on-move: false
+
+# Configurable sounds. Set enabled: false to disable a specific sound.
+sounds:
+  home-teleport-success:
+    enabled: true
+    sound: ENTITY_ENDERMAN_TELEPORT
+    volume: 1.0
+    pitch: 1.0
+  home-teleport-canceled:
+    enabled: true
+    sound: BLOCK_NOTE_BLOCK_BASS
+    volume: 1.0
+    pitch: 0.8
+  sethome-success:
+    enabled: true
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    volume: 1.0
+    pitch: 1.1
+  sethome-limit:
+    enabled: true
+    sound: ENTITY_VILLAGER_NO
+    volume: 1.0
+    pitch: 1.0
+  generic-error:
+    enabled: true
+    sound: BLOCK_NOTE_BLOCK_BASS
+    volume: 1.0
+    pitch: 0.6
+
+# Saving strategy:
+# sync-immediate: save on every change in the server thread for maximum safety
+# async-immediate: save on every change asynchronously
+# sync-and-async: do both
+save-strategy: sync-immediate
+
+# Keep a backup of the previous successfully written homes file.
+write-backup-file: true
+
+# Maximum homes by permission group.
+# Permission format: homeplugin.limit.<group>
+max-homes:
+  default: 15
+#  vip: 30
+#  admin: 100
+
+# Players cannot create homes in these worlds.
+blocked-sethome-worlds: []
+#  - spawn
+#  - event

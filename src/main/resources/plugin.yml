@@ -1,0 +1,38 @@
+name: XaniSetHome
+version: '1.0.0'
+main: ua.xani4ka.xanisethome.XaniSetHomePlugin
+api-version: '1.21'
+author: bogda
+description: Custom SetHome plugin with legacy migration, language support, and world-aware home replacement.
+commands:
+  sethome:
+    description: Creates a home with the given name
+    usage: /<command> <name>
+    permission: homeplugin.sethome
+  home:
+    description: Teleports to a home with the given name
+    usage: /<command> <name>
+    permission: homeplugin.home
+  delhome:
+    description: Deletes a home with the given name
+    usage: /<command> <name>
+    permission: homeplugin.delhome
+  admindelhome:
+    description: Admin command to delete a player's home
+    usage: /<command> <player> <home>
+    permission: homeplugin.admindelhome
+  adminlisthomes:
+    description: Admin command to list all homes of a player
+    usage: /<command> <player>
+    permission: homeplugin.adminlisthomes
+permissions:
+  homeplugin.sethome:
+    default: true
+  homeplugin.home:
+    default: true
+  homeplugin.delhome:
+    default: true
+  homeplugin.admindelhome:
+    default: op
+  homeplugin.adminlisthomes:
+    default: op

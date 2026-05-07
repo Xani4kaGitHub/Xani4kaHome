@@ -1,0 +1,30 @@
+error-player-only: "<red>Dieser Befehl kann nur von Spielern verwendet werden.</red>"
+error-no-permission: "<red>Du hast keine Berechtigung fur diesen Befehl.</red>"
+error-invalid-arguments: "<red>Du musst einen Heimnamen angeben.</red>"
+error-home-not-found: "<red>Du hast kein Home mit diesem Namen.</red>"
+error-home-name-invalid: "<red>Home-Namen durfen kein '.' enthalten.</red>"
+error-home-world-unavailable: "<red>Die Welt dieses Homes <yellow>{world}</yellow> wurde geloescht oder ist gerade nicht geladen.</red>"
+error-sethome-world-blocked: "<red>In der Welt <yellow>{world}</yellow> kannst du kein Home setzen.</red>"
+
+sethome-success: "<green>Home <yellow>{name}</yellow> wurde erstellt.</green>"
+sethome-already-exists: "<red>Du hast bereits ein Home mit diesem Namen.</red>"
+sethome-max-homes: "<red>Du kannst nicht mehr als <yellow>{max}</yellow> Homes haben.</red>"
+sethome-replaced-in-world: "<yellow>Alte Homes in der Welt <gold>{world}</gold> wurden automatisch entfernt.</yellow>"
+
+delhome-success: "<green>Home <yellow>{name}</yellow> wurde entfernt.</green>"
+
+home-teleport-cooldown: "<yellow>Noch {seconds} Sek. bis zur Teleportation.</yellow>"
+home-teleport-canceled: "<red>Teleportation abgebrochen.</red>"
+home-teleport-success: "<green>Du wurdest zu Home <yellow>{name}</yellow> teleportiert.</green>"
+
+admindelhome-usage: "<red>Benutzung: /admindelhome <player> <home></red>"
+admindelhome-player-not-found: "<red>Spieler <yellow>{player}</yellow> wurde nicht gefunden.</red>"
+admindelhome-success: "<green>Home <yellow>{home}</yellow> von Spieler <yellow>{player}</yellow> wurde geloescht.</green>"
+admindelhome-no-homes: "<red>Spieler <yellow>{player}</yellow> hat keine Homes.</red>"
+admindelhome-home-not-found: "<red>Spieler <yellow>{player}</yellow> hat kein Home <yellow>{home}</yellow>.</red>"
+
+adminlisthomes-usage: "<red>Benutzung: /adminlisthomes <player></red>"
+adminlisthomes-player-not-found: "<red>Spieler <yellow>{player}</yellow> wurde nicht gefunden.</red>"
+adminlisthomes-no-homes: "<red>Spieler <yellow>{player}</yellow> hat keine Homes.</red>"
+adminlisthomes-header: "<green>Homes von <yellow>{player}</yellow> (<yellow>{count}</yellow>)</green>"
+adminlisthomes-entry: "<gray>- <yellow>{name}</yellow>: <white>{world}</white> <gray>|</gray> <blue>X: {x}</blue> <gray>|</gray> <blue>Y: {y}</blue> <gray>|</gray> <blue>Z: {z}</blue></gray>"

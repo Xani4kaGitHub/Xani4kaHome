@@ -1,0 +1,29 @@
+error-player-only: "<red>Эту команду может использовать только игрок.</red>"
+error-no-permission: "<red>У тебя нет прав на эту команду.</red>"
+error-invalid-arguments: "<red>Нужно указать название дома.</red>"
+error-home-not-found: "<red>У тебя нет дома с таким названием.</red>"
+error-home-name-invalid: "<red>Название дома не может содержать '.'.</red>"
+error-home-world-unavailable: "<red>Мир этого дома <yellow>{world}</yellow> удалён или сейчас не загружен.</red>"
+
+sethome-success: "<green>Дом <yellow>{name}</yellow> успешно создан.</green>"
+sethome-already-exists: "<red>У тебя уже есть дом с таким названием.</red>"
+sethome-max-homes: "<red>У тебя не может быть больше <yellow>{max}</yellow> домов.</red>"
+sethome-replaced-in-world: "<yellow>Старый дом(а) в мире <gold>{world}</gold> был автоматически удалён.</yellow>"
+
+delhome-success: "<green>Дом <yellow>{name}</yellow> удалён.</green>"
+
+home-teleport-cooldown: "<yellow>До телепорта осталось {seconds} сек.</yellow>"
+home-teleport-canceled: "<red>Телепортация отменена.</red>"
+home-teleport-success: "<green>Ты телепортирован в дом <yellow>{name}</yellow>.</green>"
+
+admindelhome-usage: "<red>Использование: /admindelhome <player> <home></red>"
+admindelhome-player-not-found: "<red>Игрок <yellow>{player}</yellow> не найден.</red>"
+admindelhome-success: "<green>Дом <yellow>{home}</yellow> игрока <yellow>{player}</yellow> удалён.</green>"
+admindelhome-no-homes: "<red>У игрока <yellow>{player}</yellow> нет домов.</red>"
+admindelhome-home-not-found: "<red>У игрока <yellow>{player}</yellow> нет дома <yellow>{home}</yellow>.</red>"
+
+adminlisthomes-usage: "<red>Использование: /adminlisthomes <player></red>"
+adminlisthomes-player-not-found: "<red>Игрок <yellow>{player}</yellow> не найден.</red>"
+adminlisthomes-no-homes: "<red>У игрока <yellow>{player}</yellow> нет домов.</red>"
+adminlisthomes-header: "<green>Дома игрока <yellow>{player}</yellow> (<yellow>{count}</yellow>)</green>"
+adminlisthomes-entry: "<gray>- <yellow>{name}</yellow>: <white>{world}</white> <gray>|</gray> <blue>X: {x}</blue> <gray>|</gray> <blue>Y: {y}</blue> <gray>|</gray> <blue>Z: {z}</blue></gray>"

@@ -1,0 +1,30 @@
+error-player-only: "<red>Цю команду може використовувати лише гравець.</red>"
+error-no-permission: "<red>У тебе немає прав на цю команду.</red>"
+error-invalid-arguments: "<red>Потрібно вказати назву дому.</red>"
+error-home-not-found: "<red>У тебе немає дому з такою назвою.</red>"
+error-home-name-invalid: "<red>Назва дому не може містити '.'.</red>"
+error-home-world-unavailable: "<red>Світ цього дому <yellow>{world}</yellow> видалений або зараз не завантажений.</red>"
+error-sethome-world-blocked: "<red>У світі <yellow>{world}</yellow> не можна ставити дім.</red>"
+
+sethome-success: "<green>Дім <yellow>{name}</yellow> успішно створено.</green>"
+sethome-already-exists: "<red>У тебе вже є дім з такою назвою.</red>"
+sethome-max-homes: "<red>У тебе не може бути більше <yellow>{max}</yellow> домів.</red>"
+sethome-replaced-in-world: "<yellow>Старий дім(доми) у світі <gold>{world}</gold> було автоматично видалено.</yellow>"
+
+delhome-success: "<green>Дім <yellow>{name}</yellow> видалено.</green>"
+
+home-teleport-cooldown: "<yellow>До телепорта залишилося {seconds} с.</yellow>"
+home-teleport-canceled: "<red>Телепортацію скасовано.</red>"
+home-teleport-success: "<green>Тебе телепортовано до дому <yellow>{name}</yellow>.</green>"
+
+admindelhome-usage: "<red>Використання: /admindelhome <player> <home></red>"
+admindelhome-player-not-found: "<red>Гравця <yellow>{player}</yellow> не знайдено.</red>"
+admindelhome-success: "<green>Дім <yellow>{home}</yellow> гравця <yellow>{player}</yellow> видалено.</green>"
+admindelhome-no-homes: "<red>У гравця <yellow>{player}</yellow> немає домів.</red>"
+admindelhome-home-not-found: "<red>У гравця <yellow>{player}</yellow> немає дому <yellow>{home}</yellow>.</red>"
+
+adminlisthomes-usage: "<red>Використання: /adminlisthomes <player></red>"
+adminlisthomes-player-not-found: "<red>Гравця <yellow>{player}</yellow> не знайдено.</red>"
+adminlisthomes-no-homes: "<red>У гравця <yellow>{player}</yellow> немає домів.</red>"
+adminlisthomes-header: "<green>Доми гравця <yellow>{player}</yellow> (<yellow>{count}</yellow>)</green>"
+adminlisthomes-entry: "<gray>- <yellow>{name}</yellow>: <white>{world}</white> <gray>|</gray> <blue>X: {x}</blue> <gray>|</gray> <blue>Y: {y}</blue> <gray>|</gray> <blue>Z: {z}</blue></gray>"

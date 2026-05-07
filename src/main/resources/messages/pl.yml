@@ -1,0 +1,30 @@
+error-player-only: "<red>Tej komendy moze uzyc tylko gracz.</red>"
+error-no-permission: "<red>Nie masz uprawnien do tej komendy.</red>"
+error-invalid-arguments: "<red>Musisz podac nazwe domu.</red>"
+error-home-not-found: "<red>Nie masz domu o takiej nazwie.</red>"
+error-home-name-invalid: "<red>Nazwa domu nie moze zawierac '.'.</red>"
+error-home-world-unavailable: "<red>Swiat tego domu <yellow>{world}</yellow> zostal usuniety lub nie jest teraz zaladowany.</red>"
+error-sethome-world-blocked: "<red>Nie mozna ustawic domu w swiecie <yellow>{world}</yellow>.</red>"
+
+sethome-success: "<green>Dom <yellow>{name}</yellow> zostal utworzony.</green>"
+sethome-already-exists: "<red>Masz juz dom o takiej nazwie.</red>"
+sethome-max-homes: "<red>Nie mozesz miec wiecej niz <yellow>{max}</yellow> domow.</red>"
+sethome-replaced-in-world: "<yellow>Stary dom(stare domy) w swiecie <gold>{world}</gold> zostal automatycznie usuniety.</yellow>"
+
+delhome-success: "<green>Dom <yellow>{name}</yellow> zostal usuniety.</green>"
+
+home-teleport-cooldown: "<yellow>Pozostalo {seconds} s do teleportacji.</yellow>"
+home-teleport-canceled: "<red>Teleportacja anulowana.</red>"
+home-teleport-success: "<green>Zostales przeteleportowany do domu <yellow>{name}</yellow>.</green>"
+
+admindelhome-usage: "<red>Uzycie: /admindelhome <player> <home></red>"
+admindelhome-player-not-found: "<red>Gracz <yellow>{player}</yellow> nie zostal znaleziony.</red>"
+admindelhome-success: "<green>Usunieto dom <yellow>{home}</yellow> gracza <yellow>{player}</yellow>.</green>"
+admindelhome-no-homes: "<red>Gracz <yellow>{player}</yellow> nie ma domow.</red>"
+admindelhome-home-not-found: "<red>Gracz <yellow>{player}</yellow> nie ma domu <yellow>{home}</yellow>.</red>"
+
+adminlisthomes-usage: "<red>Uzycie: /adminlisthomes <player></red>"
+adminlisthomes-player-not-found: "<red>Gracz <yellow>{player}</yellow> nie zostal znaleziony.</red>"
+adminlisthomes-no-homes: "<red>Gracz <yellow>{player}</yellow> nie ma domow.</red>"
+adminlisthomes-header: "<green>Domy gracza <yellow>{player}</yellow> (<yellow>{count}</yellow>)</green>"
+adminlisthomes-entry: "<gray>- <yellow>{name}</yellow>: <white>{world}</white> <gray>|</gray> <blue>X: {x}</blue> <gray>|</gray> <blue>Y: {y}</blue> <gray>|</gray> <blue>Z: {z}</blue></gray>"

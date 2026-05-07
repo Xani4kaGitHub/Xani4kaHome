@@ -1,0 +1,30 @@
+error-player-only: "<red>Dit commando kan alleen door een speler worden gebruikt.</red>"
+error-no-permission: "<red>Je hebt geen toestemming voor dit commando.</red>"
+error-invalid-arguments: "<red>Je moet een home-naam opgeven.</red>"
+error-home-not-found: "<red>Je hebt geen home met die naam.</red>"
+error-home-name-invalid: "<red>Home-namen mogen geen '.' bevatten.</red>"
+error-home-world-unavailable: "<red>De wereld van deze home <yellow>{world}</yellow> is verwijderd of momenteel niet geladen.</red>"
+error-sethome-world-blocked: "<red>Je kunt geen home zetten in de wereld <yellow>{world}</yellow>.</red>"
+
+sethome-success: "<green>Home <yellow>{name}</yellow> is aangemaakt.</green>"
+sethome-already-exists: "<red>Je hebt al een home met die naam.</red>"
+sethome-max-homes: "<red>Je kunt niet meer dan <yellow>{max}</yellow> homes hebben.</red>"
+sethome-replaced-in-world: "<yellow>Oude homes in de wereld <gold>{world}</gold> zijn automatisch verwijderd.</yellow>"
+
+delhome-success: "<green>Home <yellow>{name}</yellow> is verwijderd.</green>"
+
+home-teleport-cooldown: "<yellow>Nog {seconds} sec. tot teleportatie.</yellow>"
+home-teleport-canceled: "<red>Teleportatie geannuleerd.</red>"
+home-teleport-success: "<green>Je bent geteleporteerd naar home <yellow>{name}</yellow>.</green>"
+
+admindelhome-usage: "<red>Gebruik: /admindelhome <player> <home></red>"
+admindelhome-player-not-found: "<red>Speler <yellow>{player}</yellow> is niet gevonden.</red>"
+admindelhome-success: "<green>Home <yellow>{home}</yellow> van speler <yellow>{player}</yellow> is verwijderd.</green>"
+admindelhome-no-homes: "<red>Speler <yellow>{player}</yellow> heeft geen homes.</red>"
+admindelhome-home-not-found: "<red>Speler <yellow>{player}</yellow> heeft geen home met de naam <yellow>{home}</yellow>.</red>"
+
+adminlisthomes-usage: "<red>Gebruik: /adminlisthomes <player></red>"
+adminlisthomes-player-not-found: "<red>Speler <yellow>{player}</yellow> is niet gevonden.</red>"
+adminlisthomes-no-homes: "<red>Speler <yellow>{player}</yellow> heeft geen homes.</red>"
+adminlisthomes-header: "<green>Homes van <yellow>{player}</yellow> (<yellow>{count}</yellow>)</green>"
+adminlisthomes-entry: "<gray>- <yellow>{name}</yellow>: <white>{world}</white> <gray>|</gray> <blue>X: {x}</blue> <gray>|</gray> <blue>Y: {y}</blue> <gray>|</gray> <blue>Z: {z}</blue></gray>"

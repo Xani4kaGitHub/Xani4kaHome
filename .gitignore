@@ -1,0 +1,7 @@
+README.md
+README.txt
+target/
+build/
+.idea/
+.vscode/
+*.iml
