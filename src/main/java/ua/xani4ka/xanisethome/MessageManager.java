@@ -65,7 +65,7 @@ public final class MessageManager {
         }
 
         for (int index = 0; index + 1 < replacements.length; index += 2) {
-            raw = raw.replace("{" + replacements[index] + "}", replacements[index + 1]);
+            raw = raw.replace("{" + replacements[index] + "}", this.miniMessage.escapeTags(replacements[index + 1]));
         }
         return this.miniMessage.deserialize(raw);
     }

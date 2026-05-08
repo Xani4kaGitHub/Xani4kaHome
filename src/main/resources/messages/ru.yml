@@ -2,7 +2,7 @@ error-player-only: "<red>Эту команду может использоват
 error-no-permission: "<red>У тебя нет прав на эту команду.</red>"
 error-invalid-arguments: "<red>Нужно указать название дома.</red>"
 error-home-not-found: "<red>У тебя нет дома с таким названием.</red>"
-error-home-name-invalid: "<red>Название дома не может содержать '.'.</red>"
+error-home-name-invalid: "<red>Название дома может содержать только английские, украинские, русские буквы и цифры.</red>"
 error-home-world-unavailable: "<red>Мир этого дома <yellow>{world}</yellow> удалён или сейчас не загружен.</red>"
 
 sethome-success: "<green>Дом <yellow>{name}</yellow> успешно создан.</green>"

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -18,6 +19,8 @@ public final class HomeStorage {
     private final Settings settings;
     private final File homesFile;
     private final File backupFile;
+    private final Object writeLock = new Object();
+    private final AtomicLong saveVersion = new AtomicLong();
 
     public HomeStorage(XaniSetHomePlugin plugin, Settings settings) {
         this.plugin = plugin;
@@ -83,18 +86,20 @@ public final class HomeStorage {
     }
 
     public void saveHomes(Map<UUID, List<Home>> homes) {
+        long version = this.saveVersion.incrementAndGet();
         try {
-            writeHomes(buildHomesYaml(homes).saveToString());
+            writeHomesIfCurrent(version, buildHomesYaml(homes).saveToString());
         } catch (IOException exception) {
             this.plugin.getLogger().severe("Could not save homes.yml: " + exception.getMessage());
         }
     }
 
     public void saveHomesAsync(Map<UUID, List<Home>> homes) {
+        long version = this.saveVersion.incrementAndGet();
         String snapshot = buildHomesYaml(homes).saveToString();
         this.plugin.getServer().getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try {
-                writeHomes(snapshot);
+                writeHomesIfCurrent(version, snapshot);
             } catch (IOException exception) {
                 this.plugin.getLogger().severe("Could not save homes.yml asynchronously: " + exception.getMessage());
             }
@@ -128,6 +133,19 @@ public final class HomeStorage {
         }
 
         Files.move(tempFile.toPath(), this.homesFile.toPath(), StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+    }
+
+    private void writeHomesIfCurrent(long version, String data) throws IOException {
+        if (version < this.saveVersion.get()) {
+            return;
+        }
+
+        synchronized (this.writeLock) {
+            if (version < this.saveVersion.get()) {
+                return;
+            }
+            writeHomes(data);
+        }
     }
 
     private double requireNumber(YamlConfiguration yaml, String path) {

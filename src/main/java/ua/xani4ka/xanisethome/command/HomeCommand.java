@@ -1,6 +1,9 @@
 package ua.xani4ka.xanisethome.command;
 
 import java.time.Duration;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
 import org.bukkit.Location;
@@ -20,6 +23,7 @@ public final class HomeCommand implements CommandExecutor {
     private final HomeService homeService;
     private final MessageManager messageManager;
     private final SoundManager soundManager;
+    private final Map<UUID, BukkitRunnable> pendingTeleports = new ConcurrentHashMap<>();
 
     public HomeCommand(XaniSetHomePlugin plugin, HomeService homeService, MessageManager messageManager, SoundManager soundManager) {
         this.plugin = plugin;
@@ -54,6 +58,7 @@ public final class HomeCommand implements CommandExecutor {
             return true;
         }
 
+        cancelPendingTeleport(player.getUniqueId());
         int cooldown = this.homeService.getCooldownSeconds();
         if (cooldown <= 0) {
             teleport(player, home, name);
@@ -61,11 +66,17 @@ public final class HomeCommand implements CommandExecutor {
         }
 
         Location startLocation = player.getLocation().clone();
-        new BukkitRunnable() {
+        BukkitRunnable task = new BukkitRunnable() {
             private int secondsLeft = cooldown;
 
             @Override
             public void run() {
+                if (!player.isOnline()) {
+                    pendingTeleports.remove(player.getUniqueId(), this);
+                    cancel();
+                    return;
+                }
+
                 if (secondsLeft > 0) {
                     player.showTitle(
                         Title.title(
@@ -84,6 +95,7 @@ public final class HomeCommand implements CommandExecutor {
                             )
                         );
                         soundManager.play(player, "home-teleport-canceled");
+                        pendingTeleports.remove(player.getUniqueId(), this);
                         cancel();
                         return;
                     }
@@ -93,9 +105,12 @@ public final class HomeCommand implements CommandExecutor {
                 }
 
                 teleport(player, home, name);
+                pendingTeleports.remove(player.getUniqueId(), this);
                 cancel();
             }
-        }.runTaskTimer(this.plugin, 0L, 20L);
+        };
+        this.pendingTeleports.put(player.getUniqueId(), task);
+        task.runTaskTimer(this.plugin, 0L, 20L);
         return true;
     }
 
@@ -119,5 +134,12 @@ public final class HomeCommand implements CommandExecutor {
             || current.getY() != start.getY()
             || current.getZ() != start.getZ()
             || !current.getWorld().getUID().equals(start.getWorld().getUID());
+    }
+
+    private void cancelPendingTeleport(UUID playerId) {
+        BukkitRunnable existingTask = this.pendingTeleports.remove(playerId);
+        if (existingTask != null) {
+            existingTask.cancel();
+        }
     }
 }

@@ -19,17 +19,24 @@ public final class Settings {
     }
 
     public int getMaxHomes(Player player) {
-        ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("max-homes");
-        if (section == null) {
-            return this.plugin.getConfig().getInt("max-homes", 15);
+        if (!isPermissionBasedMaxHomesEnabled()) {
+            return Math.max(0, this.plugin.getConfig().getInt("max-homes", 15));
         }
 
-        int max = section.getInt("default", 15);
+        ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("permission-max-homes");
+        if (section == null || !section.getKeys(false).stream().anyMatch(key -> !"enabled".equalsIgnoreCase(key))) {
+            section = this.plugin.getConfig().getConfigurationSection("max-homes");
+        }
+        if (section == null) {
+            return Math.max(0, this.plugin.getConfig().getInt("max-homes", 15));
+        }
+
+        int max = Math.max(0, section.getInt("default", this.plugin.getConfig().getInt("max-homes", 15)));
         for (String key : section.getKeys(false)) {
             if ("default".equalsIgnoreCase(key)) {
                 continue;
             }
-            if (!player.hasPermission("homeplugin.limit." + key)) {
+            if (!player.hasPermission("xanisethome.limit." + key)) {
                 continue;
             }
             int value = section.getInt(key, max);
@@ -38,6 +45,13 @@ public final class Settings {
             }
         }
         return max;
+    }
+
+    private boolean isPermissionBasedMaxHomesEnabled() {
+        if (this.plugin.getConfig().contains("permission-max-homes.enabled")) {
+            return this.plugin.getConfig().getBoolean("permission-max-homes.enabled", false);
+        }
+        return this.plugin.getConfig().getBoolean("use-permission-based-max-homes", false);
     }
 
     public boolean isBlockedSetHomeWorld(String worldName) {

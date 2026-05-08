@@ -2,7 +2,7 @@ error-player-only: "<red>This command can only be used by players.</red>"
 error-no-permission: "<red>You do not have permission to use this command.</red>"
 error-invalid-arguments: "<red>You must enter a home name.</red>"
 error-home-not-found: "<red>You do not have a home with that name.</red>"
-error-home-name-invalid: "<red>Home names cannot contain '.'.</red>"
+error-home-name-invalid: "<red>Home names may contain only English, Ukrainian, Russian letters and numbers.</red>"
 error-home-world-unavailable: "<red>This home's world <yellow>{world}</yellow> is missing or not loaded right now.</red>"
 error-sethome-world-blocked: "<red>You cannot set a home in world <yellow>{world}</yellow>.</red>"
 

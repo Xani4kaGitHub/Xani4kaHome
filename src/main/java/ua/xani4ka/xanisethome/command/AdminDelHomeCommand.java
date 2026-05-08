@@ -20,7 +20,7 @@ public final class AdminDelHomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("homeplugin.admindelhome")) {
+        if (!sender.hasPermission("xanisethome.admin.delhome")) {
             sender.sendMessage(this.messageManager.get("error-no-permission"));
             return true;
         }

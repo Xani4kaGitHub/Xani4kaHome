@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 public final class HomeService {
     public enum AddHomeResult {
         SUCCESS,
-        REPLACED_IN_WORLD,
         ALREADY_EXISTS,
         LIMIT_REACHED
     }
@@ -76,16 +75,6 @@ public final class HomeService {
             }
         }
 
-        boolean replacedHomes = false;
-        String currentWorldName = player.getWorld().getName();
-        Iterator<Home> iterator = playerHomes.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().isInWorld(currentWorldName)) {
-                iterator.remove();
-                replacedHomes = true;
-            }
-        }
-
         if (playerHomes.size() >= getMaxHomes(player)) {
             return AddHomeResult.LIMIT_REACHED;
         }
@@ -93,7 +82,7 @@ public final class HomeService {
         playerHomes.add(Home.fromLocation(name, player.getLocation()));
         this.homes.put(uuid, playerHomes);
         saveAfterMutation();
-        return replacedHomes ? AddHomeResult.REPLACED_IN_WORLD : AddHomeResult.SUCCESS;
+        return AddHomeResult.SUCCESS;
     }
 
     public synchronized boolean removeHome(Player player, String name) {

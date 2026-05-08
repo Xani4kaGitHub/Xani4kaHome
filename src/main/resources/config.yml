@@ -56,9 +56,14 @@ save-strategy: sync-immediate
 # Keep a backup of the previous successfully written homes file.
 write-backup-file: true
 
-# Maximum homes by permission group.
-# Permission format: homeplugin.limit.<group>
-max-homes:
+# Maximum homes.
+# If permission-max-homes.enabled is false, max-homes applies to everyone.
+# If permission-max-homes.enabled is true, permission-max-homes groups are used instead.
+max-homes: 3
+
+# Permission format: xanisethome.limit.<group>
+permission-max-homes:
+  enabled: false
   default: 15
 #  vip: 30
 #  admin: 100

@@ -23,7 +23,7 @@ public final class AdminListHomesCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("homeplugin.adminlisthomes")) {
+        if (!sender.hasPermission("xanisethome.admin.listhomes")) {
             sender.sendMessage(this.messageManager.get("error-no-permission"));
             return true;
         }
